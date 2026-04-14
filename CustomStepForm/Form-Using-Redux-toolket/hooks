@@ -1,0 +1,39 @@
+import { nextStep, prevStep, goToStep } from "../redux/formSlice";
+
+import {
+  useDispatch,
+  useSelector,
+  type TypedUseSelectorHook,
+} from "react-redux";
+
+import type { AppDispatch, RootState } from "../redux/store";
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+export const useStepNavigation = () => {
+  const dispatch = useAppDispatch();
+
+  const currentStep = useSelector((state: RootState) => state.form.currentStep);
+  const totalSteps = useAppSelector(
+    (state: RootState) => state.form.totalSteps,
+  );
+
+  const isFirstStep = currentStep === 0;
+  const isLastStep = currentStep === totalSteps - 1;
+  const progress = totalSteps > 1 ? (currentStep / (totalSteps - 1)) * 100 : 0;
+
+  return {
+    // Step info
+    currentStep,
+    totalSteps,
+    isFirstStep,
+    isLastStep,
+    progress,
+
+    // Navigation actions
+    next: () => dispatch(nextStep()),
+    back: () => dispatch(prevStep()),
+    goTo: (step: number) => dispatch(goToStep(step)),
+  };
+};
