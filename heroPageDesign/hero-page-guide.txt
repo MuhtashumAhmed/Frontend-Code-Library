@@ -1,0 +1,7 @@
+==== hero page ke 2 ways hain 
+1- normal bg clr then top pe content ok  --- isme loader ki need nhi ok
+----- is case mai normal bg clr thats it (no extra file or code neede) ------------
+
+
+2- with heavy full image .... so is me loader mean bg gradient when image is loading best UX
+---------- is case me *HeroBackground* file use hogi take img load hony tak bg gradiend sho ho take UX kharab na ho ok ---

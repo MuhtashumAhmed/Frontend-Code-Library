@@ -1,0 +1,30 @@
+// •	Redux is client side so all files of redux make always client side (store , slice , thunk)
+// Make store provider File storeProvider.tsx  and wrap your App Layout on it
+
+
+// 2 hooks bh banaye better suggestion of store  make 2 method useAppDispatch and useAppSelector for better type inference in your components
+
+
+------------- installation ------------
+npm install @reduxjs/toolkit
+npm install react-redux
+
+
+------------------------------------
+
+=============== Must wrap Provider in main layout file (app/layout.tsx) ===============
+Wrapping in main Rot Layout.tsx/jsx
+<html lang="en">
+      <body
+        className={`${raleway.variable} ${montserrat.variable}  ${inter.variable} ${poppins.variable} ${manrope.variable} ${merriweather.variable} antialiased`}
+      >
+        <ReduxProvider>
+   
+            {children}
+         
+        </ReduxProvider>
+      </body>
+    </html>
+
+
+    ---------------------

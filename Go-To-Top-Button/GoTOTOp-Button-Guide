@@ -1,0 +1,14 @@
+=========must Add button into main layout file -- (bcz button want to show all page when scoll trigger)
+
+<html lang="en">
+      <body
+        className={`${raleway.variable} ${montserrat.variable}  ${inter.variable} ${poppins.variable} ${manrope.variable} ${merriweather.variable} antialiased`}
+      >
+        
+            {children}
+         
+            <GoToTopButton />
+     
+       
+      </body>
+    </html>
