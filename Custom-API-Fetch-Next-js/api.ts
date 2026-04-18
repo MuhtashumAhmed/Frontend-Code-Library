@@ -1,4 +1,9 @@
+// ======== API_BASE_URL *** from  env file
+
 import { ApiError } from "./apiError";
+
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+export const ACCESS_TOKEN_STORAGE_KEY = "virtual_business_access_token";
 
 type ApiFetchOptions = Omit<RequestInit, "body"> & {
     body?: any;
