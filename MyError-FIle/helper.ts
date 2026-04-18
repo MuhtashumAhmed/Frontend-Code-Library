@@ -13,6 +13,7 @@ export const handleApiError = (error: unknown, fallback?: string) => {
   toast.error(errorText || fallback || "Something went wrong");
 };
 
+
 export const handleApiSuccess = (message: string, fallback?: string) => {
 const successText =
 MyErrors[message as keyof typeof MyErrors] || fallback;

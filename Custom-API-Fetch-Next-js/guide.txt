@@ -1,0 +1,36 @@
+---- make APiError.tx file to extent class ... helps  when serverside throw error
+---- make custom APi fetch -- (currently use localstorage system in fetch can be use cookies system which is best and secure )
+
+--------- Usage -------------
+
+export const loginUser = async (credentials: LoginCredentials): Promise<LoginSuccessResponse> => {
+    const response = await apiFetch<LoginResponse>(ENDPOINTS.AUTH.LOGIN, {
+        method: "POST",
+        body: credentials,
+    });
+
+    //  Type guard - check if success
+    if (response.error) {
+        throw new Error(response.message); // "invalid_credentials"
+    }
+
+    return response as LoginSuccessResponse; // Now data exists!
+};
+
+// === get profile ====
+---------------IF API is want accesstoken then must requireAuth = tue and then pass token key --then cutom APi.ts will automatically inject Bearer token ot o
+export const getUserProfile = async (): Promise<LoginSuccessResponse> => {
+    const response = await apiFetch<LoginResponse>(ENDPOINTS.AUTH.PROFILE, {
+
+        requireAuth: true,
+        tokenKey: TOKEN_KEYS.LOGIN_USER_ACCESS_TOKEN,
+        
+    });
+
+    //  Type guard - check if success
+    if (response.error) {
+        throw new Error(response.message); // "invalid_credentials"
+    }
+
+    return response as LoginSuccessResponse; // Now data exists!
+};

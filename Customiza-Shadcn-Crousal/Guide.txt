@@ -1,0 +1,8 @@
+---- firsly install **corusal from shadcn 
+--- then use that basic crousal in file hwere to use and then customize it 
+
+•	Customization dots to move or auto slide images without extra library don’t have dots normal basic left right arrows which looks ugly
+•	Extra library: npm install embla-carousel-autoplay
+•	Next and previous buttons remove, and dots include  if want that basic carousal that just copy code from Shadcn directly
+
+
