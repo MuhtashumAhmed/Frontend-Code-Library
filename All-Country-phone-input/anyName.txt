@@ -1,0 +1,58 @@
+--- firsly install packages 
+npm i react-phone-input-2
+
+and
+
+npm i libphonenumber-js
+
+--- just these 2 required to get any country phone input with flag also validation 
+
+
+
+
+// validationSchema.ts
+import { isValidPhoneNumber } from "libphonenumber-js";
+import { z } from "zod";
+
+export const scheduleVisitSchema = z.object({
+  name: z
+    .string()
+    .min(3, "name must be 3 character long")
+    .nonempty("Name is required"),
+
+  email: z.string().email("Enter a valid email"),
+
+  phone_number: z
+    .string()
+    .optional()
+    .refine((val) => {
+      if (!val || val.trim() === "") return true;
+      return isValidPhoneNumber(val);
+    }, {
+      message: "Invalid phone number",
+    }),
+
+  message: z.string().optional(),
+
+})
+
+
+export type ScheduleVisitFormValues = z.infer<typeof scheduleVisitSchema>;
+
+
+
+=============== UI Usage ===============
+controller use bcz of React hook form 
+
+<Controller
+          name="phone_number"
+          control={control}
+          render={({ field }) => (
+            <PhoneInput
+              country={"us"}
+              value={field.value}
+              onChange={(value) => field.onChange("+" + value)}
+              inputClass="!w-full !h-[40px] border border-myBrown/85! rounded px-3 py-2 w-full outline-none focus:ring-1 focus:ring-myBrown bg-transparent! "
+            />
+          )}
+        />
