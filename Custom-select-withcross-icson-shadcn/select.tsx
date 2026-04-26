@@ -1,5 +1,5 @@
-// ==== updated select file which is given my shad cn when install *select* ===
-// ----- just replace compleet file code with this
+// ==== updated select file which is given my shadCN when install *select* ===
+// ----- just replace complete file code with this select 
 
 "use client";
 
