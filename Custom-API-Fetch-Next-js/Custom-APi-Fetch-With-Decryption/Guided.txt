@@ -1,0 +1,4 @@
+1- create ** decrypt.ts file
+2- craete api.ts file in which fecth having decryption feature (AES algorithm)
+
+3- Just take Secrets From  BAckend --- remaing all same copy paste 
