@@ -1,0 +1,29 @@
+1- install data tabel form sahdcn then 
+2- craete amin file which is "DataTable.tsx" 
+        *** includes pagination ,filtering ,sorting ,checkbox 
+        *** just passs data and column and if filter then pass filter components
+
+3- create columns and data 
+4- filter compoennt if needed (Optional)   --  filterContent={ <Component />}
+
+
+
+=========== main usage ===========
+ <DataTable
+        columns={employeeLoanApplicationsTableColumns}
+        data={employeeLoanApplicationsTableData}
+        rowClassName="pl-4 text-sm text-myBluishColor "
+        ColumnClassName="bg-[#DFDFDF]"
+        showExport={false}
+        showFilters={true}
+        isSelectable={true}
+        filterContent={
+            <EmployeeLoanApplicationTableFilters
+            filters={filters}
+            setFilters={setFilters}
+            dateRange={dateRange}
+            setDateRange={setDateRange}
+            onClose={() => setFiltersOpen(false)}
+            />
+        }
+        />

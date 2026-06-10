@@ -1,0 +1,28 @@
+// basic Seo code 
+// metaDAta import form next js
+
+
+export const metadata: Metadata = {
+  title: "Coworking Space for Rent in Round Lake Beach, Illinois.",
+  description:
+    "Private, professional meeting rooms for rent on Rollins Road with enterprise fibre, 4K screens, and seating for up to 8. Book by the hour or full day.",
+  metadataBase: new URL("https://illinoisoffices.com"),
+
+
+  openGraph: {
+    type: "website",
+    url: "https://illinoisoffices.com/professional-office-suites",
+    title: "Coworking Space for Rent in Round Lake Beach, Illinois.",
+    description:
+      "Flexible coworking spaces on Rollins Road in Lake County. Shared desks, private offices, meeting rooms, and training rooms available hourly, monthly, or yearly.",
+    siteName: "Illinois Offices",
+  },
+
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Coworking Space for Rent in Round Lake Beach, Illinois.",
+    description:
+      "Flexible coworking spaces on Rollins Road in Lake County. Shared desks, private offices, meeting rooms, and training rooms available hourly, monthly, or yearly.",
+  },
+};
