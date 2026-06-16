@@ -1,0 +1,32 @@
+Shadcn – Custom Select  Support Both State and RHF
+Just pass placeholder , options , (useRHF - if using with RHF )
+
+
+
+
+=============== Usage =================
+ 
+With RHF
+<MySelect
+  useRHF
+  control={form.control}
+  name="country"
+  placeholder="Select Country"
+  options={[
+    { label: "Pakistan", value: "pk" },
+    { label: "USA", value: "us" },
+  ]}
+/>
+
+With normal useState (No RHF)
+const [country, setCountry] = useState("")
+
+<MySelect
+value={country}
+onChange={setCountry}
+placeholder="Select Country"
+options={[
+{ label: "Pakistan", value: "pk" },
+{ label: "USA", value: "us" },
+]}
+/> 
