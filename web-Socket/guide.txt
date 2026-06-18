@@ -1,0 +1,75 @@
+ 
+==== Must be client side 
+=== Dont send anything backend auto give data just listen 
+ 
+ 
+ ----- Wrap in layout so that Complete App can access WS ----
+
+<html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${manrope.variable} ${poppins.variable} ${sora.variable} ${jetBrains_mono.variable} antialiased`}
+    >
+      <body className="bg-myBackground ">
+        <SocketProvider>
+          <ReduxProvider>{children}</ReduxProvider>
+        </SocketProvider>
+      </body>
+    </html>
+
+
+
+-------------- Usage to get value frombackend Web Socket ----------
+
+  // ------ socket data -------
+  const messages = useSocketMessages();
+  console.log("socket Data from customer notification component ", messages);
+
+
+  ---------------- Usage to show Api data and then update that data from socket ----------
+  
+   // ------ socket data -------
+  const messages = useSocketMessages();
+  console.log("socket Data from customer notification component ", messages);
+
+
+  const [items, setItems] = useState<AppNotification[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  // ----- APi calling ------
+  useEffect(() => {
+    (async () => {
+      try {
+        const page = await getNotifications(10);
+        setItems(page.rows);
+      } catch {
+        setError("Couldn't load notifications.");
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+  //  ---------Socket calling --------
+  useEffect(() => {
+    if (!messages?.length) return;
+    const latestMessage = messages[messages.length - 1];
+    // Notification payload validation
+    if (
+      !latestMessage?.id ||
+      !latestMessage?.title ||
+      !latestMessage?.message
+    ) {
+      return;
+    }
+    setItems((prev) => {
+      // duplicate prevent
+      const exists = prev.some((item) => item.id === latestMessage.id);
+
+      if (exists) {
+        return prev.map((item) =>
+          item.id === latestMessage.id ? { ...item, ...latestMessage } : item,
+        );
+      }
+      // add newest notification on top
+      return [latestMessage, ...prev];
+    });
+  }, [messages]);
